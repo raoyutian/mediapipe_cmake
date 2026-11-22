@@ -6,9 +6,25 @@ option(BUILD_DEMO "IF BUILD LIB WITH DEMO" ON)
 
 if (BUILD_DEMO)
     message(STATUS "BUILD_DEMO is ON")
+	
+	# raoyutian add
+    if (WIN32)
+     ADD_DEFINITIONS(-DROOTPATH=\"${CMAKE_SOURCE_DIR}/\") 
+     message(STATUS "${CMAKE_SOURCE_DIR}")
+    endif (WIN32) 
+	
+	
 else ()
     message(STATUS "BUILD_DEMO is OFF")
 endif ()
+
+
+# raoyutian add
+if (WIN32)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)   
+endif (WIN32) 
+
+
 
 set(OpenCV_DIR "" CACHE PATH "Path to OpenCV/opencv_lite build directory (REQUIRED)")
 
@@ -53,13 +69,29 @@ if (ANDROID)
     list(APPEND OpenCV_LIBS ${LIB_opencv_imgproc})
     list(APPEND OpenCV_LIBS ${log-lib})
 else ()
-    find_package(OpenCV REQUIRED)
-    if (OpenCV_FOUND)
-        message(STATUS "Found OpenCV Lib at ${OpenCV_DIR}!")
-        include_directories( ${OpenCV_INCLUDE_DIRS})
-    else ()
-        message(SEND_ERROR "Cound nont found OpenCV lib at ${OpenCV_DIR}")
-    endif ()
+   # find_package(OpenCV REQUIRED)
+   # if (OpenCV_FOUND)
+   #  message(STATUS "Found OpenCV Lib at ${OpenCV_DIR}!")
+   # include_directories( ${OpenCV_INCLUDE_DIRS})
+   #else ()
+   #   message(SEND_ERROR "Cound nont found OpenCV lib at ${OpenCV_DIR}")
+   #endif ()
+# raoyutian add
+   if (WIN32)
+     include_directories("${OpenCV_DIR}/include")
+     set(OpenCV_LIBS "${OpenCV_DIR}/x64/vc16/lib/opencv_world470.lib")
+
+   else ()
+	   find_package(OpenCV REQUIRED)
+	   if (OpenCV_FOUND)
+		 message(STATUS "Found OpenCV Lib at ${OpenCV_DIR}!")
+		include_directories( ${OpenCV_INCLUDE_DIRS})
+	   else ()
+		  message(SEND_ERROR "Cound nont found OpenCV lib at ${OpenCV_DIR}")
+	   endif ()
+	   
+	endif () 
+   
 endif ()
 
 
@@ -96,3 +128,8 @@ include(${CMAKE_SOURCE_DIR}/iris_tracker/CMakeLists.txt)
 #mpp_vision holistic tracker
 include(${CMAKE_SOURCE_DIR}/holistic_tracker/CMakeLists.txt)
 
+# raoyutian add
+if (WIN32)
+        file(COPY ${OpenCV_DIR}/x64/vc16/lib/opencv_world470.dll DESTINATION ${CMAKE_BINARY_DIR})
+        file(COPY ${OpenCV_DIR}/x64/vc16/lib/MNN.dll DESTINATION ${CMAKE_BINARY_DIR})
+endif()

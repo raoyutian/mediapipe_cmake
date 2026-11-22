@@ -27,7 +27,9 @@ void draw(const Mat& img, const std::vector<BoxKp2>& box)
     }
 }
 
-const string root_path = "/Users/moo/work/my_project/mediapipe_cmake2/mediapipe_cmake/";
+
+//const string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+std::string root_path=ROOTPATH;
 const string data_path = root_path + "data/body_image/";
 
 void test_image()

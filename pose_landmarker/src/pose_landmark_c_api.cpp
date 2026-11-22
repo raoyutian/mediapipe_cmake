@@ -30,7 +30,7 @@ enum MPP_FlipType {
 
 #define MAX_POSE_NUM 1
 
-__attribute__((visibility("default"))) __attribute__((used))
+ 
 static mpp::PoseLandmarker* landmarker = nullptr;
 
 int initPoseLandmarker()

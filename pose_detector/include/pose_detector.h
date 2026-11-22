@@ -27,7 +27,7 @@ limitations under the License.
 namespace mpp
 {
 
-class PoseDetector
+class MMP_API PoseDetector
 {
 public:
     /// Create PoseDetector with given model path.

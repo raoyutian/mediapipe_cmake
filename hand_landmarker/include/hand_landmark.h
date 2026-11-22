@@ -54,7 +54,7 @@ enum class HandLandmarkName {
 };
 
 class HandLandmarker_Impl;
-class HandLandmarker
+class MMP_API HandLandmarker
 {
 public:
 

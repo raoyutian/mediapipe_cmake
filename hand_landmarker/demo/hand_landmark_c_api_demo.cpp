@@ -7,7 +7,8 @@
 using namespace cv;
 using namespace std;
 
-std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+std::string root_path=ROOTPATH;
 std::string test_data_path = root_path + "data/";
 
 void draw_hand_landmarks(Mat& img, const HandLandmarkResult* hands, int hand_count)

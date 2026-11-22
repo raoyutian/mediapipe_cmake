@@ -11,7 +11,8 @@ bool drawing = false;
 cv::Point prevPoint;
 bool runSeg = false;
 
-const string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//const string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+std::string root_path=ROOTPATH;
 InterativeSegmenter segmenter(
     root_path + "interactive_segmenter/models/magic_touch.mnn"
 );

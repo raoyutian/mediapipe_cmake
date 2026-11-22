@@ -3,6 +3,15 @@
 #ifndef MPP_CMAKE_FACE_LANDMARK_C_API_H
 #define MPP_CMAKE_FACE_LANDMARK_C_API_H
 
+#if defined(_WIN32)
+#define MMP_API __declspec(dllexport)
+#else
+#define MMP_API __attribute__((visibility("default"))) __attribute__((used))
+#endif
+
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -46,44 +55,44 @@ struct FaceLandmarkResult {
 // Initialize FaceLandmarker instance.
 // max_face_num: -1 for all detected faces or a positive cap.
 // device: 0 for CPU.
-__attribute__((visibility("default"))) __attribute__((used))
-int initFaceLandmarker(int max_face_num, int device);
+
+MMP_API int initFaceLandmarker(int max_face_num, int device);
 
 // Load face detector model from memory buffer.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelFaceDetect(const char *buffer, long buffer_size, const char *model_suffix, int device);
+ 
+MMP_API int loadModelFaceDetect(const char *buffer, long buffer_size, const char *model_suffix, int device);
 
 // Load face landmark model from memory buffer.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelFaceLandmark(const char *buffer, long buffer_size, const char *model_suffix, int device);
+ 
+MMP_API int loadModelFaceLandmark(const char *buffer, long buffer_size, const char *model_suffix, int device);
 
 // Load face detector model from filesystem path.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelFaceDetectFromFile(const char *model_path, int device);
+ 
+MMP_API int loadModelFaceDetectFromFile(const char *model_path, int device);
 
 // Load face landmark model from filesystem path.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelFaceLandmarkFromFile(const char *model_path, int device);
+ 
+MMP_API int loadModelFaceLandmarkFromFile(const char *model_path, int device);
 
 // Run landmark on a single frame (no temporal smoothing).
 // Returns number of faces written to results, negative on error.
-__attribute__((visibility("default"))) __attribute__((used))
-int runFaceLandmarkImage(const char *data, int width, int height, int stride, int flip, int rotate,
+ 
+MMP_API int runFaceLandmarkImage(const char *data, int width, int height, int stride, int flip, int rotate,
 		int img_type, struct FaceLandmarkResult *results, int results_capacity);
 
 // Run landmark in video mode (tracking + smoothing).
 // Returns number of faces written to results, negative on error.
-__attribute__((visibility("default"))) __attribute__((used))
-int runFaceLandmarkVideo(const char *data, int width, int height, int stride, int flip, int rotate,
+ 
+MMP_API int runFaceLandmarkVideo(const char *data, int width, int height, int stride, int flip, int rotate,
 		int img_type, struct FaceLandmarkResult *results, int results_capacity);
 
 // Query active landmark dimension (468 or 478). Returns 0 if the landmark model is not loaded.
-__attribute__((visibility("default"))) __attribute__((used))
-int getFaceLandmarkDimension();
+ 
+MMP_API int getFaceLandmarkDimension();
 
 // Release internal resources.
-__attribute__((visibility("default"))) __attribute__((used))
-int releaseFaceLandmarker();
+ 
+MMP_API int releaseFaceLandmarker();
 
 #ifdef __cplusplus
 }

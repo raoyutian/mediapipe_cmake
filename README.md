@@ -1,5 +1,32 @@
 # MediaPipe CMake
 
+
+## 2026-11-22 by raoyutian
+## Add support for the Windows platform build
+### windows Prerequisites
+- CMake 3.10 or higher
+- Git
+- Microsoft Visual Studio 2019  with C++14 compatible compiler or higher
+- Ninja 1.13.2 (pip install Ninja==1.13.2 )
+
+### windows Building from Source
+
+Run the bash file:
+### build_win_x64.bat
+
+```  
+@echo on 
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat
+cd ~%dp0
+mkdir build_win
+cd build_win
+cmake .. -GNinja  -DCMAKE_POLICY_VERSION_MINIMUM=3.5  -DCMAKE_BUILD_TYPE=Release -DOpenCV_DIR="../opencv_lite\build"
+ninja -j8
+@pause
+
+```
+
+
 <div align="center">
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
@@ -24,7 +51,7 @@ MediaPipe is an excellent framework containing many AI model engineering impleme
 - ✅ **CMake Build System** - Easy integration with existing CMake projects
 - ✅ **Enhanced Performance** - Up to 40% faster than official implementation (using MNN backend)
 - ✅ **Pure C++ Implementation** - No overhead, optimized for production
-- ✅ **Multi-Platform Support** - Linux and Android (ARM32/ARM64)
+- ✅ **Multi-Platform Support** - Linux and Android (ARM32/ARM64) and Windows(x32/x64)
 - ✅ **Powered by [OpenCV_lite](https://github.com/zihaomu/opencv_lite)** - Lightweight inference engine with MNN backend
 
 ## ✨ Features

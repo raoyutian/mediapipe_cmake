@@ -3,6 +3,13 @@
 #ifndef MPP_CMAKE_HAND_LANDMARK_C_API_H
 #define MPP_CMAKE_HAND_LANDMARK_C_API_H
 
+#if defined(_WIN32)
+#define MMP_API __declspec(dllexport)
+#else
+#define MMP_API __attribute__((visibility("default"))) __attribute__((used))
+#endif
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -46,40 +53,40 @@ struct HandLandmarkResult {
 // Initialize HandLandmarker instance.
 // max_hand_num: -1 for all detected hands or a positive cap.
 // device: 0 for CPU.
-__attribute__((visibility("default"))) __attribute__((used))
-int initHandLandmarker(int max_hand_num, int device);
+ 
+MMP_API int initHandLandmarker(int max_hand_num, int device);
 
 // Load hand detector model from memory buffer.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelHandDetect(const char *buffer, long buffer_size, const char *model_suffix, int device);
+ 
+MMP_API int loadModelHandDetect(const char *buffer, long buffer_size, const char *model_suffix, int device);
 
 // Load hand landmark model from memory buffer.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelHandLandmark(const char *buffer, long buffer_size, const char *model_suffix, int device);
+ 
+MMP_API int loadModelHandLandmark(const char *buffer, long buffer_size, const char *model_suffix, int device);
 
 // Load hand detector model from filesystem path.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelHandDetectFromFile(const char *model_path, int device);
+ 
+MMP_API int loadModelHandDetectFromFile(const char *model_path, int device);
 
 // Load hand landmark model from filesystem path.
-__attribute__((visibility("default"))) __attribute__((used))
-int loadModelHandLandmarkFromFile(const char *model_path, int device);
+ 
+MMP_API int loadModelHandLandmarkFromFile(const char *model_path, int device);
 
 // Run landmark on a single frame (no temporal smoothing).
 // Returns number of hands written to results, negative on error.
-__attribute__((visibility("default"))) __attribute__((used))
-int runHandLandmarkImage(const char *data, int width, int height, int stride, int flip, int rotate,
+ 
+MMP_API int runHandLandmarkImage(const char *data, int width, int height, int stride, int flip, int rotate,
         int img_type, struct HandLandmarkResult *results, int results_capacity);
 
 // Run landmark in video mode (tracking + smoothing).
 // Returns number of hands written to results, negative on error.
-__attribute__((visibility("default"))) __attribute__((used))
-int runHandLandmarkVideo(const char *data, int width, int height, int stride, int flip, int rotate,
+ 
+MMP_API int runHandLandmarkVideo(const char *data, int width, int height, int stride, int flip, int rotate,
         int img_type, struct HandLandmarkResult *results, int results_capacity);
 
 // Release internal resources.
-__attribute__((visibility("default"))) __attribute__((used))
-int releaseHandLandmarker();
+ 
+MMP_API int releaseHandLandmarker();
 
 #ifdef __cplusplus
 }

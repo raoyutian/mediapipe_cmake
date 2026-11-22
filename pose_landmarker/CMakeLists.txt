@@ -16,8 +16,8 @@ file(GLOB SRC
         ${CMAKE_SOURCE_DIR}/utils/*.cpp
         )
 
-add_library(vision_pose_landmarker SHARED ${SRC} ${SUB_DIR}/src/pose_landmark.def)
-
+#add_library(vision_pose_landmarker SHARED ${SRC} ${SUB_DIR}/src/pose_landmark.def)
+add_library(vision_pose_landmarker SHARED ${SRC} )
 target_link_libraries(vision_pose_landmarker
 #        ${vision_pose_detector}
         ${OpenCV_LIBS}

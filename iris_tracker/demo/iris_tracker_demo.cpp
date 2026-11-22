@@ -25,7 +25,8 @@ void draw(const Mat& img, const PointList3f& points, const Scalar color = Scalar
     }
 }
 
-std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+std::string root_path=ROOTPATH;
 std::string test_data_path = root_path + "data/";
 
 void test_image()

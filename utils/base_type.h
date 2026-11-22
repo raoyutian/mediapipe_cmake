@@ -7,7 +7,7 @@
 #define MPP_REPRODUCE_BASE_DATA_H
 
 #include "opencv2/opencv.hpp"
-
+#define M_PI 3.14159265
 // Box with 2D key points.
 struct BoxKp2
 {

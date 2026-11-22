@@ -7,7 +7,6 @@
 using namespace cv;
 using namespace mpp;
 using namespace std;
-
 void draw(const Mat& img, const std::vector<BoxKp3>& box)
 {
     int w = img.cols;
@@ -27,7 +26,9 @@ void draw(const Mat& img, const std::vector<BoxKp3>& box)
     }
 }
 
-std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//std::string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//std::string root_path="D:/MyWorks/OpenSources/mediapipe_cmake/";
+std::string root_path=ROOTPATH;
 std::string test_data_path = root_path + "data/";
 
 void test_image()
@@ -48,15 +49,16 @@ void test_image()
 
 void test_camera()
 {
-    string detectModelPath = root_path + "hand_detector/models/palm_detection_full.mnn";
+  
+	string detectModelPath = root_path + "hand_detector/models/palm_detection_full.mnn";
     string landmarkModelPath = root_path + "hand_landmarker/models/hand_landmark_full.mnn";
     HandLandmarker landmarker(detectModelPath, landmarkModelPath, 2);
 
     std::vector<BoxKp3> boxOut = {};
-    // VideoCapture cap(0);
+     VideoCapture cap(0);
     
-    std::string video_path = test_data_path + "video/hands03.mp4";
-    VideoCapture cap(video_path);
+    //std::string video_path = test_data_path + "video/hands03.mp4";
+    //VideoCapture cap(video_path);
     
     if (!cap.isOpened()) {
         std::cout << "Failed to open video!" << std::endl;

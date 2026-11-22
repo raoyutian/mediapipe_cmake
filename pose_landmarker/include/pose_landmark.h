@@ -17,7 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-
+#pragma once
 #ifndef MPP_REPRODUCE_HAND_LANDMARK_H
 #define MPP_REPRODUCE_HAND_LANDMARK_H
 
@@ -68,7 +68,7 @@ namespace mpp
 /// - the visibility, presence of 33 key points  [visibility, presence]. The visibility, presence is [0, 1] probability.
 /// - the 33 key point of world landmark, instead of value in pixel, it is value in meters.
 /// - the score.
-class PoseLandmarker
+class  MMP_API PoseLandmarker
 {
 public:
 

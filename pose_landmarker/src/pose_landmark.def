@@ -1,9 +1,0 @@
-LIBRARY   vision_pose_landmarker
-EXPORTS
-    testStruct
-    initPoseLandmarker
-    loadModelPoseDetect
-    loadModelPoseLandmark
-    runPoseLandmark
-    releasePoseLandmark
-

@@ -26,7 +26,8 @@ void draw(const Mat& img, const PointList3f& points)
 }
 
 // ROOT PATH
-const string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+//const string root_path = "/home/moo/work/my_lab/mpp_project/mediapiep_cmake_private/";
+std::string root_path=ROOTPATH;
 const string pose_detector = root_path + "pose_detector/models/pose_detection.mnn";
 const string pose_landmarker = root_path + "pose_landmarker/models/pose_landmark_full_sim.mnn";
 const string face_detector = root_path + "face_detector/models/face_detection_short_range.mnn";

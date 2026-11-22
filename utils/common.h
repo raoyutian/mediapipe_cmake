@@ -1,9 +1,16 @@
 //
 // Created by mzh on 2023/8/21.
 //
-
+//add MMP_API by raoyutian 2026-11-22
+#pragma once
 #ifndef MPP_REPRODUCE_COMMON_H
 #define MPP_REPRODUCE_COMMON_H
+
+#if defined(_WIN32)
+#define MMP_API __declspec(dllexport)
+#else
+#define MMP_API __attribute__((visibility("default"))) __attribute__((used))
+#endif
 
 #include <iostream>
 
