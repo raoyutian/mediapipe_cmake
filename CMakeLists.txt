@@ -9,8 +9,7 @@ if (BUILD_DEMO)
 	
 	# raoyutian add
     if (WIN32)
-     ADD_DEFINITIONS(-DROOTPATH=\"${CMAKE_SOURCE_DIR}/\") 
-     message(STATUS "${CMAKE_SOURCE_DIR}")
+     	ADD_DEFINITIONS(-DROOTPATH=\"${CMAKE_SOURCE_DIR}/\") 
     endif (WIN32) 
 	
 	
